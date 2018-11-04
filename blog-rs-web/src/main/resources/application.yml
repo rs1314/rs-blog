@@ -1,0 +1,41 @@
+server:
+  port: 10001
+
+mybatis:
+  config-location: classpath:mybatis-config.xml        # mybatis配置文件所在路径
+  type-aliases-package: cn.rs.blog.bean    # 所有Entity别名类所在包
+  mapper-locations:
+  - classpath*:mybatis/**/*.xml                       # mapper映射文件
+
+
+
+spring:
+  application:
+    name: versioncloud-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver          # mysql驱动包
+    #url: jdbc:mysql://192.168.1.115:3306/rs_blog?useSSL=false             # 数据库名称
+    url: jdbc:mysql://127.0.0.1:3306/rs_blog?useSSL=false                # 数据库名称
+    username: root
+    password: DaikuanTest888..
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+
+
+
+
+rsblog:
+  managePath: "manage"
+  groupPath: "group"
+  weiboPath: "weibo"
+  frontTemplate: "front"
+  memberTemplate: "member"
+  manageTemplate: "manage"
+  ###新浪上传图片
+sina:
+  username: "新浪账号"
+  password: "新浪密码"

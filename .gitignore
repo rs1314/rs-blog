@@ -1,0 +1,7 @@
+*.idea
+*.iml
+*.swp
+target/
+
+
+sn.txt
