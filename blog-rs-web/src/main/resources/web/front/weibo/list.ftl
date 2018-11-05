@@ -50,7 +50,6 @@
                             <textarea cols="5" class="form-control area emoji-render-input" name="content" id="weibo-content"
                                       maxlength="${WEIBO_POST_MAXCONTENT}"></textarea>
                             <input type="hidden" name="pictures" id="weibo-pictures">
-                            <input type="hidden" name="md5" id="weibo-md5">
                         </p>
                         <div class="row emoji-container" id="emoji">
                             <i class="icon-smile emoji-tbtn"></i>
@@ -74,7 +73,7 @@
                                             <label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label>
                                         </div>
                                     </div>
-                                    <p>或将照片拖到这里，最多可选1张</p>
+                                    <p>或将照片拖到这里，最多可选9张</p>
                                 </div>
                                 <ul class="filelist"></ul>
                             </div>

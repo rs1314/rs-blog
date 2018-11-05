@@ -30,7 +30,7 @@ public class ActionController extends BaseController {
         Page page = new Page(request);
         ResultModel<ActionLog> actionList = actionLogService.memberActionLog(page,0);
         model.addAttribute("model", actionList);
-        return rsBlogConfig.getFrontTemplate() + "/action/list";
+        return rsBlogConfig.getFrontTemplate() + "/action/lists";
     }
 
 

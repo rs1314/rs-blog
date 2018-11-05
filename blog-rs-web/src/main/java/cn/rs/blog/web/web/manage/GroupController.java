@@ -40,7 +40,7 @@ public class GroupController extends BaseController {
         List<Group> list = groupService.list(status,key);
         model.addAttribute("list",list);
         model.addAttribute("key",key);
-        return MANAGE_FTL_PATH + "index";
+        return MANAGE_FTL_PATH + "indexs";
     }
 
     @RequestMapping(value = "${rsblog.managePath}/group/delete/{id}",method = RequestMethod.GET)

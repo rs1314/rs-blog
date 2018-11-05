@@ -83,7 +83,7 @@ public class IndexController extends BaseController {
         model.addAttribute("systemVersion", Const.SYSTEM_VERSION);
         model.addAttribute("systemName",Const.SYSTEM_NAME);
         model.addAttribute("systemUpdateTime",Const.SYSTEM_UPDATE_TIME);
-        return FTL_PATH + "/index";
+        return FTL_PATH + "/indexs";
     }
 
     /**
@@ -93,7 +93,7 @@ public class IndexController extends BaseController {
     @Clear()
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(){
-        return FTL_PATH + "/login";
+        return FTL_PATH + "/logins";
     }
 
     /**

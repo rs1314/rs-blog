@@ -47,7 +47,7 @@ public class PictureController extends BaseController{
         Page page = new Page(request);
         ResultModel resultModel = pictureService.listByPage(page,0);
         model.addAttribute("model", resultModel);
-        return MANAGE_FTL_PATH + "list";
+        return MANAGE_FTL_PATH + "lists";
     }
 
     @RequestMapping(value = "/delete/{pictureId}",method = RequestMethod.GET)

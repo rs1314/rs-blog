@@ -33,12 +33,12 @@ public class GroupTypeController extends BaseController {
     public String index(Model model) {
         List<GroupType> list = groupTypeService.list();
         model.addAttribute("list", list);
-        return MANAGE_FTL_PATH + "list";
+        return MANAGE_FTL_PATH + "lists";
     }
 
     @RequestMapping(value = "${rsblog.managePath}/group/type/add", method = RequestMethod.GET)
     public Object add() {
-        return MANAGE_FTL_PATH + "add";
+        return MANAGE_FTL_PATH + "adds";
     }
 
     @RequestMapping(value = "${rsblog.managePath}/group/type/save", method = RequestMethod.POST)
@@ -52,7 +52,7 @@ public class GroupTypeController extends BaseController {
     public String edit(@PathVariable("id") int id, Model model) {
         GroupType groupType = groupTypeService.findById(id);
         model.addAttribute("groupType", groupType);
-        return MANAGE_FTL_PATH + "edit";
+        return MANAGE_FTL_PATH + "edits";
     }
 
     @RequestMapping(value = "${rsblog.managePath}/group/type/update", method = RequestMethod.POST)

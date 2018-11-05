@@ -38,14 +38,14 @@ public class ActionController extends BaseController {
     public String actionList(Model model){
         List<Action> list = actionService.list();
         model.addAttribute("list",list);
-        return MANAGE_FTL_PATH + "list";
+        return MANAGE_FTL_PATH + "lists";
     }
 
     @RequestMapping("edit/{id}")
     public String find(@PathVariable("id") Integer id, Model model){
         Action action = actionService.findById(id);
         model.addAttribute("action",action);
-        return MANAGE_FTL_PATH + "edit";
+        return MANAGE_FTL_PATH + "edits";
     }
 
     @RequestMapping(value = "update",method = RequestMethod.POST)
@@ -68,7 +68,7 @@ public class ActionController extends BaseController {
         }
         ResultModel<ActionLog> list = actionLogService.listByPage(page,memberId);
         model.addAttribute("model",list);
-        return MANAGE_FTL_PATH + "actionLogList";
+        return MANAGE_FTL_PATH + "actionLogLists";
     }
 
     @RequestMapping("memberActionLog")
@@ -79,7 +79,7 @@ public class ActionController extends BaseController {
         }
         ResultModel<ActionLog> list = actionLogService.memberActionLog(page,memberId);
         model.addAttribute("model",list);
-        return MANAGE_FTL_PATH + "memberActionLog";
+        return MANAGE_FTL_PATH + "memberActionLogs";
     }
 
 

@@ -36,7 +36,7 @@ public class WeiboController extends BaseController {
         Page page = new Page(request);
         ResultModel resultModel = weiboService.listByPage(page,0,0,key);
         model.addAttribute("model", resultModel);
-        return MANAGE_FTL_PATH + "index";
+        return MANAGE_FTL_PATH + "indexs";
     }
 
     @RequestMapping(value = "${rsblog.managePath}/weibo/delete/{id}", method = RequestMethod.GET)

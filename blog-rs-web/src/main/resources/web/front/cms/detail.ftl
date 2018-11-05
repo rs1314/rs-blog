@@ -68,9 +68,9 @@
                     <@ads id=2>
                         <#include "/tp/ad.ftl"/>
                     </@ads>
-                    <div class="content">
+                    <section class="content">
                         ${article.content}
-                    </div>
+                    </section>
                     <div class="text-center">
                     <#if article.isFavor == 0>
                         <a class="btn btn-danger btn-article-favor btn-article-unfavor article-favor" href="javascript:void(0)" article-id="${article.id}">

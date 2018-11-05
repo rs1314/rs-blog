@@ -56,7 +56,7 @@
     </div>
     <div class='disclaimer'>
         <p>欢迎登陆rs后台管理系统 <a href="../">返回首页</a></p>
-        <p>Powered By <a href="http://blog.rs1314.cn" target="_blank">rs</a> CopyRight © 2012-2017</p>
+        <p>Powered By <a href="http://www.rs1314.cn" target="_blank">rs</a> CopyRight © 2012-2017</p>
     </div>
 </div>
 <div class='authent'>

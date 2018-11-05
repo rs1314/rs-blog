@@ -35,12 +35,12 @@ public class ArticleCateController extends BaseController {
     public String list(Model model){
         List<ArticleCate> list = articleCateService.list();
         model.addAttribute("list",list);
-        return MANAGE_FTL_PATH + "/list";
+        return MANAGE_FTL_PATH + "/lists";
     }
 
     @RequestMapping("${rsblog.managePath}/cms/articleCate/add")
     public String add(Model model){
-        return MANAGE_FTL_PATH + "/add";
+        return MANAGE_FTL_PATH + "/adds";
     }
 
     @RequestMapping("${rsblog.managePath}/cms/articleCate/save")
@@ -59,7 +59,7 @@ public class ArticleCateController extends BaseController {
     public String edit(@PathVariable("id") int id, Model model){
         ArticleCate articleCate = articleCateService.findById(id);
         model.addAttribute("articleCate",articleCate);
-        return MANAGE_FTL_PATH + "/edit";
+        return MANAGE_FTL_PATH + "/edits";
     }
 
     @RequestMapping("${rsblog.managePath}/cms/articleCate/update")

@@ -68,7 +68,7 @@ public class PictureController extends BaseController {
         ResultModel resultModel = pictureAlbumService.listByMember(memberId);
         model.addAttribute("model", resultModel);
         model.addAttribute("member",findMember);
-        return rsBlogConfig.getFrontTemplate() + "/picture/album";
+        return rsBlogConfig.getFrontTemplate() + "/picture/albums";
     }
 
     @RequestMapping(value = "/member/picture/album",method = RequestMethod.GET)
@@ -77,13 +77,13 @@ public class PictureController extends BaseController {
         Member loginMember = MemberUtil.getLoginMember(request);
         ResultModel resultModel = pictureAlbumService.listByMember(loginMember.getId());
         model.addAttribute("model", resultModel);
-        return MEMBER_FTL_PATH + "/picture/album";
+        return MEMBER_FTL_PATH + "/picture/albums";
     }
 
     @RequestMapping(value = "/member/picture/addAlbum",method = RequestMethod.GET)
     @Before(UserLoginInterceptor.class)
     public String addAlbum(Model model){
-        return MEMBER_FTL_PATH + "/picture/addAlbum";
+        return MEMBER_FTL_PATH + "/picture/addAlbums";
     }
 
     @RequestMapping(value = "/member/picture/saveAlbum",method = RequestMethod.POST)
@@ -113,7 +113,7 @@ public class PictureController extends BaseController {
         ResultModel resultModel = pictureService.listByAlbum(page,albumId,loginMemberId);
         model.addAttribute("model", resultModel);
         model.addAttribute("pictureAlbum",pictureAlbum);
-        return rsBlogConfig.getFrontTemplate() + "/picture/list";
+        return rsBlogConfig.getFrontTemplate() + "/picture/lists";
     }
 
     @RequestMapping(value = "/member/picture/list/{memberId}-{albumId}",method = RequestMethod.GET)
@@ -132,7 +132,7 @@ public class PictureController extends BaseController {
         ResultModel resultModel = pictureService.listByAlbum(page,albumId,loginMemberId);
         model.addAttribute("model", resultModel);
         model.addAttribute("pictureAlbum",pictureAlbum);
-        return MEMBER_FTL_PATH + "/picture/list";
+        return MEMBER_FTL_PATH + "/picture/lists";
     }
 
     @RequestMapping(value = {"/picture","/picture/"},method = RequestMethod.GET)
@@ -142,7 +142,7 @@ public class PictureController extends BaseController {
         Page page = new Page(request);
         ResultModel resultModel = pictureService.listByPage(page,loginMemberId);
         model.addAttribute("model", resultModel);
-        return rsBlogConfig.getFrontTemplate() + "/picture/index";
+        return rsBlogConfig.getFrontTemplate() + "/picture/indexs";
     }
 
     @RequestMapping(value = "/picture/indexData",method = RequestMethod.GET)
@@ -164,7 +164,7 @@ public class PictureController extends BaseController {
             return rsBlogConfig.getFrontTemplate() + ErrorUtil.error(model,-1011, Const.INDEX_ERROR_FTL_PATH);
         }
         model.addAttribute("picture",picture);
-        return rsBlogConfig.getFrontTemplate() + "/picture/detail";
+        return rsBlogConfig.getFrontTemplate() + "/picture/details";
     }
 
 
@@ -215,7 +215,7 @@ public class PictureController extends BaseController {
             return rsBlogConfig.getFrontTemplate() + ErrorUtil.error(model,-1001, Const.INDEX_ERROR_FTL_PATH);
         }
         model.addAttribute("albumId",albumId);
-        return MEMBER_FTL_PATH + "/picture/uploadPic";
+        return MEMBER_FTL_PATH + "/picture/uploadPics";
     }
 
     @RequestMapping(value="/member/picture/uploadPic/{albumId}")

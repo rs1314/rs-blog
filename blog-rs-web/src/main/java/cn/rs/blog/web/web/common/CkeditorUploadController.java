@@ -95,7 +95,7 @@ public class CkeditorUploadController extends BaseController {
                      */
                     //上传回来 的图片地址
                     MultipartFile[] multipartFiles = {file};
-                    urls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 0);
+                    urls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 2);
                 } catch (IOException e) {
                     out.print("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" + callback + ",''," + "'" + e + "');</script>");
                     out.flush();

@@ -39,14 +39,14 @@
                         <div class="box-body">
                             <p>
                                 感谢您使用rs，rs是一款基于JAVA企业级平台研发的社交管理系统
-                                <a href="http://blog.rs1314.cn" target="_blank">blog.rs1314.cn</a>。
+                                <a href="http://www.rs1314.cn" target="_blank">www.rs1314.cn</a>。
                             </p>
                             <p>
                                 <a class="btn btn-success"
                                    href="http://wpa.qq.com/msgrd?v=3&uin=2215289394&site=qq&menu=yes" target="_blank">
                                     <i class="fa fa-qq"> </i> 联系我
                                 </a>
-                                <a class="btn btn-white btn-bitbucket" href="http://blog.rs1314.cn" target="_blank">
+                                <a class="btn btn-white btn-bitbucket" href="http://www.rs1314.cn" target="_blank">
                                     <i class="fa fa-home"></i> 访问官网
                                 </a>
                             </p>
@@ -57,8 +57,8 @@
                     <div class="box box-primary">
                         <div class="box-body">
                             <p>
-                                技术支持：<a href="http://www.lxinet.com">rs网络（blog.rs1314.cn）</a><br/>
-                                产品交流：<a href="http://blog.rs1314.cn">rs社区（blog.rs1314.cn）</a><br/>
+                                技术支持：<a href="http://www.lxinet.com">rs网络（www.rs1314.cn）</a><br/>
+                                产品交流：<a href="http://www.rs1314.cn">rs社区（www.rs1314.cn）</a><br/>
                                 QQ交流群：414572608<br/>
                                 商业授权QQ：2215289394
                             </p>
@@ -97,7 +97,7 @@
                             <p>当前版本:${systemVersion}</p>
                             <p>当前版本更新时间:${systemUpdateTime}</p>
                             <p>最新版本:<span class="lastSystemVersion"></span> &nbsp;&nbsp;
-                                <a href="http://blog.rs1314.cn" target="_blank">官网查看</a></p>
+                                <a href="http://www.rs1314.cn" target="_blank">官网查看</a></p>
                             <p>最新版本更新时间:<span class="lastSystemUpdateTime"></span></p>
                             <p>&nbsp;</p>
                             <p>&nbsp;</p>
@@ -444,7 +444,7 @@
 </div>
 <script>
     $(document).ready(function () {
-        $.getJSON("http://blog.rs1314.cn/newVersion?callback=?", function(result){
+        $.getJSON("http://www.rs1314.cn/newVersion?callback=?", function(result){
             $(".lastSystemVersion").html(result.LAST_SYSTEM_VERSION);
             $(".lastSystemUpdateTime").html(result.LAST_SYSTEM_UPDATE_TIME);
         });

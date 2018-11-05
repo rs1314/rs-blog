@@ -92,7 +92,7 @@ public class IndexController extends BaseController{
         model.addAttribute("loginMember", loginMember);
         ResultModel<ActionLog> list = actionLogService.memberActionLog(page,id);
         model.addAttribute("actionLogModel",list);
-        return rsBlogConfig.getFrontTemplate() + "/u";
+        return rsBlogConfig.getFrontTemplate() + "/us";
     }
 
     @RequestMapping(value = "u/{id}/home/{type}",method = RequestMethod.GET)
@@ -124,7 +124,7 @@ public class IndexController extends BaseController{
             model.addAttribute("model", memberFansService.fansList(page,id));
         }
         model.addAttribute("type",type);
-        return rsBlogConfig.getFrontTemplate() + "/home";
+        return rsBlogConfig.getFrontTemplate() + "/homes";
     }
 
 
@@ -176,6 +176,6 @@ public class IndexController extends BaseController{
     public String link(Model model) {
         ResultModel linkModel = linkService.allList();
         model.addAttribute("linkModel",linkModel);
-        return rsBlogConfig.getFrontTemplate() + "/link";
+        return rsBlogConfig.getFrontTemplate() + "/links";
     }
 }

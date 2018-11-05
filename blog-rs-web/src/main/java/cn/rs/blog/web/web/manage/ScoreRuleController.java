@@ -33,14 +33,14 @@ public class ScoreRuleController extends BaseController {
     public String actionList(Model model){
         List<ScoreRule> list = scoreRuleService.list();
         model.addAttribute("list",list);
-        return MANAGE_FTL_PATH + "list";
+        return MANAGE_FTL_PATH + "lists";
     }
 
     @RequestMapping("edit/{id}")
     public String find(@PathVariable("id") Integer id, Model model){
         ScoreRule scoreRule = scoreRuleService.findById(id);
         model.addAttribute("scoreRule",scoreRule);
-        return MANAGE_FTL_PATH + "edit";
+        return MANAGE_FTL_PATH + "edits";
     }
 
     @RequestMapping(value = "update",method = RequestMethod.POST)

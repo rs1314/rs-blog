@@ -53,7 +53,7 @@ public class WeiboController extends BaseController {
         List<Weibo> hotList = weiboService.hotList(loginMemberId);
         model.addAttribute("hotList",hotList);
         model.addAttribute("loginUser", loginMember);
-        return rsBlogConfig.getFrontTemplate() + "/weibo/list";
+        return rsBlogConfig.getFrontTemplate() + "/weibo/lists";
     }
 
     @RequestMapping(value = "/detail/{weiboId}",method = RequestMethod.GET)
@@ -66,7 +66,7 @@ public class WeiboController extends BaseController {
         }
         model.addAttribute("weibo",weibo);
         model.addAttribute("loginUser", loginMember);
-        return rsBlogConfig.getFrontTemplate() + "/weibo/detail";
+        return rsBlogConfig.getFrontTemplate() + "/weibo/details";
     }
 
     @RequestMapping(value="/delete/{weiboId}",method = RequestMethod.GET)

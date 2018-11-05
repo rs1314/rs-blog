@@ -69,7 +69,7 @@
   <select id="listByPage" resultMap="ArticleResult">
     <include refid="common_select"/>
     <where>
-      <if test="cateid &gt; 0">
+      <if test="cateid != 0">
         a.cate_id = #{cateid}
       </if>
       <if test="key != null and key != ''">
@@ -78,7 +78,7 @@
       <if test="status != 2">
         and a.status = #{status}
       </if>
-      <if test="memberId &gt; 0">
+      <if test="memberId != 0">
         and b.member_id = #{memberId}
       </if>
     </where>
@@ -91,8 +91,8 @@
     where a.id = #{id}
   </select>
   <delete id="delete" parameterType="java.lang.Integer">
-    delete from tbl_action_log where type=1 and foreign_id = #{id};
-    delete from tbl_article where id = #{id}
+    delete from tbl_action_log where `type`=1 and foreign_id = #{id};
+    delete from tbl_article where id = #{id};
   </delete>
   <insert id="save" parameterType="Article" useGeneratedKeys="true" keyProperty="id">
     insert into tbl_article (collect_time,cate_id, archive_id,status) values (now(), #{cateId}, #{archiveId},#{status})

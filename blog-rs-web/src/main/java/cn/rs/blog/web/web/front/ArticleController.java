@@ -65,13 +65,14 @@ public class ArticleController extends BaseController {
             }
         }
         Page page = new Page(request);
+        //status 1是审核的文章  0不是审核的文章
         ResultModel resultModel = articleService.listByPage(page,key,cid,1,memberId);
         model.addAttribute("model", resultModel);
         List<ArticleCate> articleCateList = articleCateService.list();
         model.addAttribute("articleCateList",articleCateList);
         ArticleCate articleCate = articleCateService.findById(cid);
         model.addAttribute("articleCate",articleCate);
-        return rsBlogConfig.getFrontTemplate() + "/cms/list";
+        return rsBlogConfig.getFrontTemplate() + "/cms/lists";
     }
 
     @RequestMapping(value="/detail/{id}",method = RequestMethod.GET)
@@ -88,7 +89,7 @@ public class ArticleController extends BaseController {
         List<ArticleCate> articleCateList = articleCateService.list();
         model.addAttribute("articleCateList",articleCateList);
         model.addAttribute("loginUser",loginMember);
-        return rsBlogConfig.getFrontTemplate() + "/cms/detail";
+        return rsBlogConfig.getFrontTemplate() + "/cms/details";
     }
 
     @RequestMapping(value="/add",method = RequestMethod.GET)
@@ -100,7 +101,7 @@ public class ArticleController extends BaseController {
         if(StringUtils.isNotEmpty(judgeLoginJump)){
             return judgeLoginJump;
         }
-        return rsBlogConfig.getFrontTemplate() + "/cms/add";
+        return rsBlogConfig.getFrontTemplate() + "/cms/adds";
     }
 
     @RequestMapping(value="/save",method = RequestMethod.POST)
@@ -119,7 +120,7 @@ public class ArticleController extends BaseController {
                 resultModel.setMessage("文章发布成功，请等待审核");
                 resultModel.setUrl(request.getContextPath()+"/article/list");
             }else {
-                resultModel.setUrl(request.getContextPath()+"/article/detail/"+article.getId());
+                resultModel.setUrl(request.getContextPath()+"/article/details/"+article.getId());
             }
         }
         return resultModel;
@@ -141,7 +142,7 @@ public class ArticleController extends BaseController {
         List<ArticleCate> cateList = articleCateService.list();
         model.addAttribute("cateList",cateList);
         model.addAttribute("loginUser", loginMember);
-        return rsBlogConfig.getFrontTemplate() + "/cms/edit";
+        return rsBlogConfig.getFrontTemplate() + "/cms/edits";
     }
 
     @RequestMapping(value="/update",method = RequestMethod.POST)
@@ -157,7 +158,7 @@ public class ArticleController extends BaseController {
         ResultModel resultModel = new ResultModel(articleService.update(loginMember,article));
         if(resultModel.getCode() == 0){
             resultModel.setCode(2);
-            resultModel.setUrl(request.getContextPath() + "/article/detail/"+article.getId());
+            resultModel.setUrl(request.getContextPath() + "/article/details/"+article.getId());
         }
         return resultModel;
     }

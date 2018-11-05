@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @data 2018/11/2   13:01
  */
 @Controller
-public class RsErrorController implements  ErrorController {
+public class RsErrorController implements ErrorController {
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request){

@@ -33,12 +33,12 @@ public class AdsController extends BaseController{
         Page page = new Page(request);
         ResultModel resultModel = adsService.listByPage(page);
         model.addAttribute("model", resultModel);
-        return MANAGE_FTL_PATH + "list";
+        return MANAGE_FTL_PATH + "lists";
     }
 
     @RequestMapping("/add")
     public String add(){
-        return MANAGE_FTL_PATH + "add";
+        return MANAGE_FTL_PATH + "adds";
     }
 
     @RequestMapping("/save")
@@ -57,7 +57,7 @@ public class AdsController extends BaseController{
     public String edit(Model model, @PathVariable("id") Integer id){
         Ads ads = adsService.findById(id);
         model.addAttribute("ads",ads);
-        return MANAGE_FTL_PATH + "edit";
+        return MANAGE_FTL_PATH + "edits";
     }
 
     @RequestMapping("/update")

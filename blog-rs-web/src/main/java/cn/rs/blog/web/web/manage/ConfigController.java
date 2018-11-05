@@ -39,7 +39,7 @@ public class ConfigController extends BaseController {
         for (Config config:configList) {
             model.addAttribute(config.getJkey(),config.getJvalue());
         }
-        return MANAGE_FTL_PATH + "edit";
+        return MANAGE_FTL_PATH + "edits";
     }
 
     @RequestMapping(value = "baseUpdate",method = RequestMethod.POST)

@@ -111,7 +111,6 @@ public class RsConfigBlogs {
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
         freeMarkerConfigurer.setTemplateLoaderPath("classpath:/web/");
         freeMarkerConfigurer.setFreemarkerSettings(propertiesFactoryBean.getObject());
-
         Map<String, Object> variablesMaps = new HashMap<String, Object>();
         variablesMaps.put("xml_escape",fmXmlEscape);
         variablesMaps.put("cms_article_list",articleDirective);
@@ -139,7 +138,6 @@ public class RsConfigBlogs {
         freeMarkerViewResolver.setViewClass(FreeMarkerView.class);
         freeMarkerViewResolver.setContentType("text/html; charset=utf-8");
         freeMarkerViewResolver.setSuffix(".ftl");
-        freeMarkerViewResolver.setOrder(0);
         return freeMarkerViewResolver;
     }
 

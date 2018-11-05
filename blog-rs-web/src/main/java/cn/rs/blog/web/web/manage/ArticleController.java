@@ -51,14 +51,14 @@ public class ArticleController extends BaseController {
         model.addAttribute("cateList",cateList);
         model.addAttribute("key",key);
         model.addAttribute("cateid",cateid);
-        return MANAGE_FTL_PATH + "index";
+        return MANAGE_FTL_PATH + "indexs";
     }
 
     @RequestMapping(value="${rsblog.managePath}/cms/article/add",method = RequestMethod.GET)
     public String add(Model model) {
         List<ArticleCate> cateList = articleCateService.list();
         model.addAttribute("cateList",cateList);
-        return MANAGE_FTL_PATH + "add";
+        return MANAGE_FTL_PATH + "adds";
     }
 
     @RequestMapping(value="${rsblog.managePath}/cms/article/save",method = RequestMethod.POST)
@@ -88,7 +88,7 @@ public class ArticleController extends BaseController {
         model.addAttribute("cateList",cateList);
         Article article = articleService.findById(id,loginMember);
         model.addAttribute("article",article);
-        return MANAGE_FTL_PATH + "/edit";
+        return MANAGE_FTL_PATH + "/edits";
     }
 
     @RequestMapping(value="${rsblog.managePath}/cms/article/update",method = RequestMethod.POST)

@@ -34,6 +34,6 @@ public class ScoreDetailController extends BaseController {
         Page page = new Page(request);
         ResultModel<ScoreDetail> resultModel = scoreDetailService.list(page,loginMember.getId());
         model.addAttribute("model", resultModel);
-        return INDEX_FTL_PATH + "list";
+        return INDEX_FTL_PATH + "lists";
     }
 }

@@ -117,6 +117,10 @@ public class InitInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler, Exception e) throws Exception {
+
+               System.out.println(e+"");
+
+
         if (handler != null) {
             List<Annotation> annotationList = new ArrayList<>();
             if (handler.getClass().isAssignableFrom(HandlerMethod.class)) {

@@ -34,13 +34,13 @@ public class TagController extends BaseController{
         ResultModel resultModel = tagService.listByPage(page,funcType);
         model.addAttribute("funcType",funcType);
         model.addAttribute("model", resultModel);
-        return MANAGE_FTL_PATH + "list";
+        return MANAGE_FTL_PATH + "lists";
     }
 
     @RequestMapping("/add/{funcType}")
     public String add(Model model,@PathVariable("funcType") Integer funcType){
         model.addAttribute("funcType",funcType);
-        return MANAGE_FTL_PATH + "add";
+        return MANAGE_FTL_PATH + "adds";
     }
 
     @RequestMapping("/save")
@@ -54,7 +54,7 @@ public class TagController extends BaseController{
     public String edit(Model model, @PathVariable("id") Integer id){
         Tag tag = tagService.findById(id);
         model.addAttribute("tag",tag);
-        return MANAGE_FTL_PATH + "edit";
+        return MANAGE_FTL_PATH + "edits";
     }
 
     @RequestMapping("/update")

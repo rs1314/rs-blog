@@ -82,7 +82,7 @@ public class GroupController extends BaseController {
         }
         List<GroupType> groupTypeList = groupTypeService.list();
         model.addAttribute("groupTypeList",groupTypeList);
-        return rsBlogConfig.getFrontTemplate() + "/group/apply";
+        return rsBlogConfig.getFrontTemplate() + "/group/applys";
     }
 
     /**
@@ -150,7 +150,7 @@ public class GroupController extends BaseController {
         model.addAttribute("groupTopicTypeList", groupTopicTypeList);
         model.addAttribute("loginUser", loginMember);
         model.addAttribute("typeId", typeId);
-        return rsBlogConfig.getFrontTemplate() + "/group/detail";
+        return rsBlogConfig.getFrontTemplate() + "/group/details";
     }
 
     @RequestMapping(value = "/apply", method = RequestMethod.POST)
@@ -196,7 +196,7 @@ public class GroupController extends BaseController {
         model.addAttribute("groupTypeList",groupTypeList);
         model.addAttribute("managerNames", newManagerNames);
         model.addAttribute("loginUser", loginMember);
-        return rsBlogConfig.getFrontTemplate() + "/group/edit";
+        return rsBlogConfig.getFrontTemplate() + "/group/edits";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -245,7 +245,7 @@ public class GroupController extends BaseController {
         }
         model.addAttribute("isfollow", isfollow);
         model.addAttribute("loginUser", loginMember);
-        return rsBlogConfig.getFrontTemplate() + "/group/topic";
+        return rsBlogConfig.getFrontTemplate() + "/group/topics";
     }
 
     @RequestMapping(value = "/post/{groupId}", method = RequestMethod.GET)
@@ -270,7 +270,7 @@ public class GroupController extends BaseController {
         model.addAttribute("group", group);
         List<GroupTopicType> groupTopicTypeList = groupTopicTypeService.list(groupId);
         model.addAttribute("groupTopicTypeList", groupTopicTypeList);
-        return rsBlogConfig.getFrontTemplate() + "/group/post";
+        return rsBlogConfig.getFrontTemplate() + "/group/posts";
     }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)
@@ -302,7 +302,7 @@ public class GroupController extends BaseController {
         model.addAttribute("groupTopicTypeList", groupTopicTypeList);
         model.addAttribute("groupTopic", groupTopic);
         model.addAttribute("loginUser", loginMember);
-        return rsBlogConfig.getFrontTemplate() + "/group/topicEdit";
+        return rsBlogConfig.getFrontTemplate() + "/group/topicEdits";
     }
 
     @RequestMapping(value = "/topicUpdate", method = RequestMethod.POST)
@@ -422,7 +422,7 @@ public class GroupController extends BaseController {
         }
         model.addAttribute("managerList", managerList);
         model.addAttribute("loginUser", loginMember);
-        return rsBlogConfig.getFrontTemplate() + "/group/auditList";
+        return rsBlogConfig.getFrontTemplate() + "/group/auditLists";
     }
 
 
@@ -446,7 +446,7 @@ public class GroupController extends BaseController {
         //获取群组粉丝列表,第一页，20条数据
         ResultModel<GroupFans> resultModel = groupFansService.listByPage(page, groupId);
         model.addAttribute("model", resultModel);
-        return rsBlogConfig.getFrontTemplate() + "/group/fans";
+        return rsBlogConfig.getFrontTemplate() + "/group/fanss";
     }
 
     /**
@@ -515,7 +515,7 @@ public class GroupController extends BaseController {
         model.addAttribute("group", group);
         List<GroupTopicType> list = groupTopicTypeService.list(groupId);
         model.addAttribute("list", list);
-        return rsBlogConfig.getFrontTemplate() + "/group/topicTypeList";
+        return rsBlogConfig.getFrontTemplate() + "/group/topicTypeLists";
     }
 
     @RequestMapping(value = "/topicTypeAdd/{groupId}", method = RequestMethod.GET)
@@ -531,7 +531,7 @@ public class GroupController extends BaseController {
             return rsBlogConfig.getFrontTemplate() + ErrorUtil.error(model, -1001, Const.INDEX_ERROR_FTL_PATH);
         }
         model.addAttribute("group", group);
-        return rsBlogConfig.getFrontTemplate() + "/group/topicTypeAdd";
+        return rsBlogConfig.getFrontTemplate() + "/group/topicTypeAdds";
     }
 
     @RequestMapping(value = "/topicTypeSave", method = RequestMethod.POST)
@@ -565,7 +565,7 @@ public class GroupController extends BaseController {
             return rsBlogConfig.getFrontTemplate() + ErrorUtil.error(model, -1001, Const.INDEX_ERROR_FTL_PATH);
         }
         model.addAttribute("groupTopicType", groupTopicType);
-        return rsBlogConfig.getFrontTemplate() + "/group/topicTypeEdit";
+        return rsBlogConfig.getFrontTemplate() + "/group/topicTypeEdits";
     }
 
     @RequestMapping(value = "/topicTypeUpdate", method = RequestMethod.POST)

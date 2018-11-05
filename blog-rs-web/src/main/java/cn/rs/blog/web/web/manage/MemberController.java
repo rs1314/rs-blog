@@ -36,7 +36,7 @@ public class MemberController extends BaseController {
         ResultModel resultModel = memberService.listByPage(page,key);
         model.addAttribute("model", resultModel);
         model.addAttribute("key",key);
-        return MANAGE_FTL_PATH + "index";
+        return MANAGE_FTL_PATH + "indexs";
     }
 
 
@@ -62,7 +62,7 @@ public class MemberController extends BaseController {
             return errorModel(model, "会员不存在");
         }
         model.addAttribute("member", member);
-        return MANAGE_FTL_PATH + "changepwd";
+        return MANAGE_FTL_PATH + "changepwds";
     }
 
     @RequestMapping(value = "${rsblog.managePath}/member/changepwd", method = RequestMethod.POST)
@@ -93,7 +93,7 @@ public class MemberController extends BaseController {
         ResultModel resultModel = memberService.managerList(page,key);
         model.addAttribute("model", resultModel);
         model.addAttribute("key",key);
-        return MANAGE_FTL_PATH + "managerList";
+        return MANAGE_FTL_PATH + "managerLists";
     }
 
     /**
@@ -107,7 +107,7 @@ public class MemberController extends BaseController {
         if(loginMember.getIsAdmin() == 1){
             return errorModel(model, "没有权限");
         }
-        return MANAGE_FTL_PATH + "managerAdd";
+        return MANAGE_FTL_PATH + "managerAdds";
     }
 
     /**

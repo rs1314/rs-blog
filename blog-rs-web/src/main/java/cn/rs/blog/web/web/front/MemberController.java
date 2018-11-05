@@ -6,11 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import cn.rs.blog.bean.member.Member;
 import cn.rs.blog.bean.system.ActionLog;
@@ -49,19 +45,21 @@ public class MemberController extends BaseController {
     @Autowired
     private RsBlogConfig rsBlogConfig;
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String login(Model model,@RequestParam(value = "redirectUrl",required = false,defaultValue = "") String redirectUrl){
+    @GetMapping(value = "/login")
+    public String login(Model model, @RequestParam(value = "redirectUrl",required = false,defaultValue = "") String redirectUrl){
         Member loginMember = MemberUtil.getLoginMember(request);
         if(loginMember != null){
             return "redirect:/member/";
         }
-        model.addAttribute("redirectUrl",redirectUrl);
-        return MEMBER_FTL_PATH + "/login";
+       // model.addAttribute("redirectUrl",redirectUrl);
+
+        //return MEMBER_FTL_PATH + "/login";
+        return   "member/logins";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @PostMapping(value = "/login")
     @ResponseBody
-    public ResultModel<Member> login(Member member, @RequestParam(value = "redirectUrl",required = false,defaultValue = "") String redirectUrl){
+    public ResultModel<Member> loginpost(Member member, @RequestParam(value = "redirectUrl",required = false,defaultValue = "") String redirectUrl){
         ResultModel resultModel = new ResultModel(memberService.login(member,request));
         resultModel.setCode(3);
         if (StringUtils.isNotEmpty(redirectUrl) && resultModel.getCode() >= 0){
@@ -72,18 +70,19 @@ public class MemberController extends BaseController {
         return resultModel;
     }
 
-    @RequestMapping(value = "/register",method = RequestMethod.GET)
+    @GetMapping(value = "/register")
     public String register(){
         Member loginMember = MemberUtil.getLoginMember(request);
         if(loginMember != null){
             return "redirect:/member/";
         }
-        return MEMBER_FTL_PATH + "/register";
+       // return MEMBER_FTL_PATH + "/register";
+        return   "member/registers";
     }
 
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @PostMapping(value = "/register")
     @ResponseBody
-    public ResultModel register(Member member, String repassword){
+    public ResultModel registerpost(Member member, String repassword){
         Map<String,String> config = configService.getConfigToMap();
         if("0".equals(config.get(ConfigUtil.MEMBER_REGISTER_OPEN))){
             return new ResultModel(-1,"注册功能已关闭");
@@ -109,21 +108,21 @@ public class MemberController extends BaseController {
         return memberService.register(member,request);
     }
 
-    @RequestMapping(value = "/active",method = RequestMethod.GET)
+    @GetMapping(value = "/active")
     @Before(UserLoginInterceptor.class)
     public String active(){
-        return MEMBER_FTL_PATH + "/active";
+        return MEMBER_FTL_PATH + "/actives";
     }
 
-    @RequestMapping(value = "/active",method = RequestMethod.POST)
+    @PostMapping(value = "/active")
     @ResponseBody
     @Before(UserLoginInterceptor.class)
-    public ResultModel active(String randomCode){
+    public ResultModel activepost(String randomCode){
         Member loginMember = MemberUtil.getLoginMember(request);
         return memberService.active(loginMember,randomCode,request);
     }
 
-    @RequestMapping(value = "/sendEmailActiveValidCode",method = RequestMethod.GET)
+    @GetMapping(value = "/sendEmailActiveValidCode")
     @ResponseBody
     @Before(UserLoginInterceptor.class)
     public ResultModel sendEmailActiveValidCode(){
@@ -131,12 +130,12 @@ public class MemberController extends BaseController {
         return memberService.sendEmailActiveValidCode(loginMember, request);
     }
 
-    @RequestMapping(value = "/forgetpwd",method = RequestMethod.GET)
-    public String forgetpwd(){
-        return MEMBER_FTL_PATH + "/forgetpwd";
+    @GetMapping(value = "/forgetpwd")
+    public String forgetpwds(){
+        return MEMBER_FTL_PATH + "/forgetpwdsa";
     }
 
-    @RequestMapping(value = "/forgetpwd",method = RequestMethod.POST)
+    @PostMapping(value = "/forgetpwd")
     @ResponseBody
     public ResultModel forgetpwd(String name, String email){
         return memberService.forgetpwd(name, email, request);
@@ -146,12 +145,12 @@ public class MemberController extends BaseController {
     public String resetpwd(String email,String token,Model model){
         model.addAttribute("email",email);
         model.addAttribute("token",token);
-        return MEMBER_FTL_PATH + "/resetpwd";
+        return MEMBER_FTL_PATH + "/resetpwds";
     }
 
-    @RequestMapping(value = "/resetpwd",method = RequestMethod.POST)
+    @PostMapping(value = "/resetpwd")
     @ResponseBody
-    public ResultModel resetpwd(String email, String token, String password, String repassword){
+    public ResultModel resetpwdpost(String email, String token, String password, String repassword){
         if(StringUtils.isEmpty(password)){
             return new ResultModel(-1,"新密码不能为空");
         }
@@ -165,7 +164,7 @@ public class MemberController extends BaseController {
     }
 
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @GetMapping(value = "/")
     @Before(UserLoginInterceptor.class)
     public String index(Model model){
         Member loginMember = MemberUtil.getLoginMember(request);
@@ -173,24 +172,24 @@ public class MemberController extends BaseController {
         Page page = new Page(request);
         ResultModel<ActionLog> list = actionLogService.memberActionLog(page,loginMemberId);
         model.addAttribute("actionLogModel",list);
-        return MEMBER_FTL_PATH + "index";
+        return MEMBER_FTL_PATH + "indexs";
     }
 
 
-    @RequestMapping(value = "/editInfo",method = RequestMethod.GET)
+    @GetMapping(value = "/editInfo")
     @Before(UserLoginInterceptor.class)
     public String editInfo(){
-        return MEMBER_FTL_PATH + "editInfo";
+        return MEMBER_FTL_PATH + "editInfos";
     }
 
-    @RequestMapping(value = "/editBaseInfo",method = RequestMethod.POST)
+    @PostMapping(value = "/editBaseInfo")
     @ResponseBody
     public ResultModel editBaseInfo(String name, String sex, String introduce){
         Member loginMember = MemberUtil.getLoginMember(request);
         return memberService.editBaseInfo(loginMember,name,sex,introduce);
     }
 
-    @RequestMapping(value = "/editOtherInfo",method = RequestMethod.POST)
+    @PostMapping(value = "/editOtherInfo")
     @ResponseBody
     public ResultModel editOtherInfo(String birthday, String qq, String wechat, String contactPhone,
                                      String contactEmail, String website){
@@ -198,21 +197,21 @@ public class MemberController extends BaseController {
         return memberService.editOtherInfo(loginMember,birthday,qq,wechat,contactPhone,contactEmail,website);
     }
 
-    @RequestMapping(value = "/avatar",method = RequestMethod.GET)
+    @GetMapping(value = "/avatar")
     @Before(UserLoginInterceptor.class)
     public String avatar(){
-        return MEMBER_FTL_PATH + "avatar";
+        return MEMBER_FTL_PATH + "avatars";
     }
 
-    @RequestMapping(value = "/password",method = RequestMethod.GET)
+    @GetMapping(value = "/password")
     @Before(UserLoginInterceptor.class)
     public String password(){
-        return MEMBER_FTL_PATH + "password";
+        return MEMBER_FTL_PATH + "passwords";
     }
 
-    @RequestMapping(value = "/password",method = RequestMethod.POST)
+    @PostMapping(value = "/password")
     @ResponseBody
-    public ResultModel password(String oldPassword, String newPassword, String renewPassword){
+    public ResultModel passwordpost(String oldPassword, String newPassword, String renewPassword){
         if(StringUtils.isEmpty(oldPassword)){
             return new ResultModel(-1,"旧密码不能为空");
         }
@@ -226,7 +225,7 @@ public class MemberController extends BaseController {
         return memberService.changepwd(loginMember,oldPassword,newPassword);
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    @GetMapping(value = "/logout")
     @Before(UserLoginInterceptor.class)
     public String logout(){
         MemberUtil.setLoginMember(request,null);
@@ -238,7 +237,7 @@ public class MemberController extends BaseController {
      * @param followWhoId
      * @return
      */
-    @RequestMapping(value = "/follows/{followWhoId}",method = RequestMethod.GET)
+    @GetMapping(value = "/follows/{followWhoId}")
     @ResponseBody
     public ResultModel follows(@PathVariable(value = "followWhoId") Integer followWhoId){
         Member loginMember = MemberUtil.getLoginMember(request);
@@ -250,7 +249,7 @@ public class MemberController extends BaseController {
      * @param followWhoId
      * @return
      */
-    @RequestMapping(value = "/isFollowed/{followWhoId}",method = RequestMethod.GET)
+    @GetMapping(value = "/isFollowed/{followWhoId}")
     @ResponseBody
     public ResultModel isFollowed(@PathVariable(value = "followWhoId") Integer followWhoId){
         Member loginMember = MemberUtil.getLoginMember(request);
@@ -263,7 +262,7 @@ public class MemberController extends BaseController {
      * @param memberId
      * @return
      */
-    @RequestMapping(value = "/message",method = RequestMethod.GET)
+    @GetMapping(value = "/message")
     @Before(UserLoginInterceptor.class)
     public String message(@RequestParam(value = "mid",required = false,defaultValue = "-1") Integer memberId,Model model){
         Page page = new Page(request);
@@ -277,14 +276,14 @@ public class MemberController extends BaseController {
 //        获取联系人
 //        ResponseModel contactMembers = messageService.listContactMembers(page, memberId, loginMemberId);
 //        model.addAttribute("model", contactMembers);
-        return MEMBER_FTL_PATH + "message";
+        return MEMBER_FTL_PATH + "messages";
     }
 
     /**
      * 获取联系人
      * @return
      */
-    @RequestMapping(value = "/listContactMembers",method = RequestMethod.GET)
+    @GetMapping(value = "/listContactMembers")
     @ResponseBody
     @Before(UserLoginInterceptor.class)
     public ResultModel listContactMembers(){
@@ -300,7 +299,7 @@ public class MemberController extends BaseController {
      * @param memberId
      * @return
      */
-    @RequestMapping(value = "/messageRecords/{memberId}",method = RequestMethod.GET)
+    @GetMapping(value = "/messageRecords/{memberId}")
     @ResponseBody
     @Before(UserLoginInterceptor.class)
     public ResultModel messageRecords(@PathVariable("memberId") Integer memberId){
@@ -316,7 +315,7 @@ public class MemberController extends BaseController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/sendMessageBox",method = RequestMethod.GET)
+    @GetMapping(value = "/sendMessageBox")
     @Before(UserLoginInterceptor.class)
     public String sendMessageBox(@RequestParam(value = "mid") Integer memberId,Model model){
         if(memberId == null){
@@ -327,7 +326,7 @@ public class MemberController extends BaseController {
             return rsBlogConfig.getFrontTemplate() + ErrorUtil.error(model, -1005, Const.INDEX_ERROR_FTL_PATH);
         }
         model.addAttribute("member", findMember);
-        return MEMBER_FTL_PATH + "sendMessageBox";
+        return MEMBER_FTL_PATH + "sendMessageBoxs";
     }
 
     /**
@@ -336,7 +335,7 @@ public class MemberController extends BaseController {
      * @param memberId
      * @return
      */
-    @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
+    @PostMapping(value = "/sendMessage")
     @ResponseBody
     @Before(UserLoginInterceptor.class)
     public ResultModel sendMessage(String content,Integer memberId){
@@ -356,13 +355,13 @@ public class MemberController extends BaseController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/systemMessage",method = RequestMethod.GET)
+    @GetMapping(value = "/systemMessage")
     @Before(UserLoginInterceptor.class)
-    public String systemMessage(Model model){
+    public String systemMessageget(Model model){
         Page page = new Page(request);
         Member loginMember = MemberUtil.getLoginMember(request);
         ResultModel messageModel = messageService.systemMessage(page, loginMember.getId(),request.getContextPath());
         model.addAttribute("messageModel",messageModel);
-        return MEMBER_FTL_PATH + "systemMessage";
+        return MEMBER_FTL_PATH + "systemMessages";
     }
 }
