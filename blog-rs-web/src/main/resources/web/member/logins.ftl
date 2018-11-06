@@ -54,7 +54,7 @@
                 </form>
                 <p></p>
                 <p class="text-muted text-center">
-                    <a href="forgetpwd">忘记密码?</a> |
+                    <a href="forgetpwdfind">忘记密码?</a> |
                     <a href="register">我要注册</a>
                 </p>
             </div>

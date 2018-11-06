@@ -111,7 +111,7 @@ public class MemberController extends BaseController {
     @GetMapping(value = "/active")
     @Before(UserLoginInterceptor.class)
     public String active(){
-        return MEMBER_FTL_PATH + "/actives";
+        return MEMBER_FTL_PATH + "actives";
     }
 
     @PostMapping(value = "/active")
@@ -130,12 +130,12 @@ public class MemberController extends BaseController {
         return memberService.sendEmailActiveValidCode(loginMember, request);
     }
 
-    @GetMapping(value = "/forgetpwd")
+    @GetMapping(value = "/forgetpwdfind")
     public String forgetpwds(){
-        return MEMBER_FTL_PATH + "/forgetpwdsa";
+        return "member/forgetpwdsa";
     }
 
-    @PostMapping(value = "/forgetpwd")
+    @PostMapping(value = "/forgetpwd_nn")
     @ResponseBody
     public ResultModel forgetpwd(String name, String email){
         return memberService.forgetpwd(name, email, request);
@@ -145,7 +145,7 @@ public class MemberController extends BaseController {
     public String resetpwd(String email,String token,Model model){
         model.addAttribute("email",email);
         model.addAttribute("token",token);
-        return MEMBER_FTL_PATH + "/resetpwds";
+        return MEMBER_FTL_PATH + "resetpwds";
     }
 
     @PostMapping(value = "/resetpwd")

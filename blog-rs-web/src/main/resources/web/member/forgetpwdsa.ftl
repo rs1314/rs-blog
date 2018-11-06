@@ -33,7 +33,7 @@
         <div class="col-md-4">
             <div class="ibox-content">
                 <h2 class="font-bold">忘记密码</h2>
-                <form class="m-t rs_form" action="${basePath}/member/forgetpwd" method="post" callback="reload">
+                <form class="m-t rs_form" action="${basePath}/member/forgetpwd_nn" method="post" callback="reload">
                     <div class="form-group">
                         用户名
                         <input type="text" class="form-control" name="name" data-type="require" placeholder="用户名">

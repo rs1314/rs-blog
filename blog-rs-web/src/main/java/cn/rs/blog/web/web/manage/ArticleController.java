@@ -88,7 +88,7 @@ public class ArticleController extends BaseController {
         model.addAttribute("cateList",cateList);
         Article article = articleService.findById(id,loginMember);
         model.addAttribute("article",article);
-        return MANAGE_FTL_PATH + "/edits";
+        return MANAGE_FTL_PATH + "edits";
     }
 
     @RequestMapping(value="${rsblog.managePath}/cms/article/update",method = RequestMethod.POST)

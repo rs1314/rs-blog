@@ -57,7 +57,7 @@
                     <button type="submit" class="btn btn-primary block full-width m-b">注册</button>
                     <p></p>
                     <p class="text-muted text-center">
-                    <a href="forgetpwd">忘记密码?</a> |
+                    <a href="forgetpwdfind">忘记密码?</a> |
                     <a href="login">我要登录</a>
                     </div>
                 </form>

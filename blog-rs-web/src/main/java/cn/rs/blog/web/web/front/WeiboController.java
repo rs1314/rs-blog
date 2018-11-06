@@ -78,7 +78,7 @@ public class WeiboController extends BaseController {
         ResultModel resultModel = new ResultModel(result);
         if(resultModel.getCode() >= 0){
             resultModel.setCode(2);
-            resultModel.setUrl(Const.WEIBO_PATH + "/list");
+            resultModel.setUrl(Const.WEIBO_PATH + "list");
         }
         return resultModel;
     }
