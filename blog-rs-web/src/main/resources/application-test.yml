@@ -1,0 +1,56 @@
+server:
+  port: 8006
+
+mybatis:
+  config-location: classpath:mybatis-config.xml        # mybatis配置文件所在路径
+  type-aliases-package: cn.rs.blog.bean    # 所有Entity别名类所在包
+  mapper-locations:
+  - classpath*:mybatis/**/*.xml                       # mapper映射文件
+
+
+
+spring:
+  application:
+    name: versioncloud-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver          # mysql驱动包
+    #url: jdbc:mysql://119.23.110.243:3306/rs_blog?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true             # 数据库名称
+    url: jdbc:mysql://192.168.1.115:3306/rs_blog?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true             # 数据库名称
+    #url: jdbc:mysql://127.0.0.1:3306/hua_blog?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true               # 数据库名称
+    username: root
+    password: DaikuanTest888..
+    dbcp2:
+      min-idle: 50                                         # 数据库连接池的最小维持连接数
+      initial-size: 60                                       # 初始化连接数
+      max-total: 800                                          # 最大连接数
+      max-wait-millis: 20000000                                  # 等待连接获取的最大超时时间
+      test-while-idle: true
+      validation-query: SELECT 1
+      time-between-eviction-runs-millis: 60000
+
+
+
+rsblog:
+  managePath: "manage"
+  groupPath: "group"
+  weiboPath: "weibo"
+  frontTemplate: "front"
+  memberTemplate: "member"
+  manageTemplate: "manage"
+  ###新浪上传图片
+sina:
+  username: "15024163980"
+  password: "lin123456.."
+
+#日志配置
+files:
+  path: ${file-path:d:/files}
+logging:
+  config: classpath:logback-admin.xml
+log:
+  level:
+    root: info
+    my: debug
+  file: logs/blog.log
+  maxsize: 30MB

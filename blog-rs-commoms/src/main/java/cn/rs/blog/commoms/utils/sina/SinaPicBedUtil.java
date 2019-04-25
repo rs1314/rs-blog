@@ -40,7 +40,7 @@ public class SinaPicBedUtil {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SinaPicBedUtil.class);
 
-	private static final String UPLOAD_URL = "http://picupload.service.weibo.com/interface/pic_upload.php?mime=image%sFjpeg&data=base64&url=0&markpos=1&logo=&nick=0&marks=1&app=miniblog&cb=http://weibo.com/aj/static/upimgback.html?_wv=5&callback=STK_ijax_%s";
+	private static final String UPLOAD_URL = "http://picupload.service.weibo.com/interface/pic_upload.php?mime=image%sFjpeg&data=base64&url=0&markpos=1&logo=&nick=0&marks=1&app=miniblog&cb=http://weibo.com/aj/web/upimgback.html?_wv=5&callback=STK_ijax_%s";
 
 	private static final String LOGIN_URL = "https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.4.19)&_=1530066315000";
 

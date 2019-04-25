@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,8 +61,8 @@ public class ConfigController extends BaseController {
         params.put("site_send_email_smtp",site_send_email_smtp);
         params.put("site_icp",site_icp);
         params.put("site_copyright",site_copyright);
-       // site_tongji = site_tongji.replace("&lt;","<").replace("&gt;",">").replace("&#47;","/");
         site_tongji = StringEscapeUtils.unescapeHtml4(site_tongji);
+
         params.put("site_tongji",site_tongji);
         if(StringUtils.isNotEmpty(site_send_email_password)){
             params.put("site_send_email_password",site_send_email_password);
@@ -111,7 +112,6 @@ public class ConfigController extends BaseController {
         if(StringUtils.isEmpty(weibo_alias)){
             weibo_alias = "微博";
         }
-        
         params.put("weibo_alias",weibo_alias);
         params.put("weibo_post",weibo_post);
         params.put("weibo_post_maxcontent",weibo_post_maxcontent);

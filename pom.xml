@@ -43,6 +43,8 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -50,4 +52,29 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<!--<build>-->
+		<!--<plugins>-->
+			<!--<plugin>-->
+				<!--<groupId>org.springframework.boot</groupId>-->
+				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<configuration>&lt;!&ndash; 指定该Main Class为全局的唯一入口 &ndash;&gt;-->
+                    <!--<mainClass>cn.rs.blog.RsBlogApplication</mainClass>-->
+                    <!--<layout>ZIP</layout>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>repackage</goal>&lt;!&ndash;可以把依赖的包都打包到生成的Jar包中&ndash;&gt;-->
+                        <!--</goals>-->
+                        <!--&lt;!&ndash;可以生成不含依赖包的不可执行Jar包&ndash;&gt;-->
+                        <!--&lt;!&ndash; configuration>-->
+                          <!--<classifier>exec</classifier>-->
+                        <!--</configuration> &ndash;&gt;-->
+                    <!--</execution>-->
+                <!--</executions>-->
+			<!--</plugin>-->
+		<!--</plugins>-->
+
+	<!--</build>-->
 </project>

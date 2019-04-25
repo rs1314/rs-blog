@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.rs.blog.dao.telephone.HuaNaoJinMapper" >
+  <resultMap id="BaseResultMap" type="cn.rs.blog.bean.telephone.HuaNaoJin" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="naojin_title" property="naojinTitle" jdbcType="VARCHAR" />
+    <result column="naojin_ansker" property="naojinAnsker" jdbcType="VARCHAR" />
+    <result column="naojin_time" property="naojinTime" jdbcType="VARCHAR" />
+    <result column="naojin_oredr" property="naojinOredr" jdbcType="INTEGER" />
+    <result column="naojin_isshow" property="naojinIsshow" jdbcType="INTEGER" />
+    <result column="naojin_clicknum" property="naojinClicknum" jdbcType="INTEGER" />
+    <result column="naojin_photo" property="naojinPhoto" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from hua_naojin
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.rs.blog.bean.telephone.HuaNaoJin" >
+    insert into hua_naojin (id, type_id, naojin_title, 
+      naojin_ansker, naojin_time, naojin_oredr, 
+      naojin_isshow, naojin_clicknum, naojin_photo
+      )
+    values (#{id,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{naojinTitle,jdbcType=VARCHAR}, 
+      #{naojinAnsker,jdbcType=VARCHAR}, #{naojinTime,jdbcType=VARCHAR}, #{naojinOredr,jdbcType=INTEGER}, 
+      #{naojinIsshow,jdbcType=INTEGER}, #{naojinClicknum,jdbcType=INTEGER}, #{naojinPhoto,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.rs.blog.bean.telephone.HuaNaoJin" >
+    update hua_naojin
+    set type_id = #{typeId,jdbcType=INTEGER},
+      naojin_title = #{naojinTitle,jdbcType=VARCHAR},
+      naojin_ansker = #{naojinAnsker,jdbcType=VARCHAR},
+      naojin_time = #{naojinTime,jdbcType=VARCHAR},
+      naojin_oredr = #{naojinOredr,jdbcType=INTEGER},
+      naojin_isshow = #{naojinIsshow,jdbcType=INTEGER},
+      naojin_clicknum = #{naojinClicknum,jdbcType=INTEGER},
+      naojin_photo = #{naojinPhoto,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, type_id, naojin_title, naojin_ansker, naojin_time, naojin_oredr, naojin_isshow, 
+    naojin_clicknum, naojin_photo
+    from hua_naojin
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, type_id, naojin_title, naojin_ansker, naojin_time, naojin_oredr, naojin_isshow, 
+    naojin_clicknum, naojin_photo
+    from hua_naojin
+  </select>
+
+  <select id="selectByPrimaryKeyByPageVo" resultMap="BaseResultMap" >
+    select id, type_id, naojin_title, naojin_ansker, naojin_time, naojin_oredr, naojin_isshow,
+    naojin_clicknum, naojin_photo
+    from hua_naojin where naojin_isshow = 1 order by naojin_clicknum desc limit ${page} ,10
+  </select>
+
+
+  <!--查询type单个详情-->
+  <select id="getTypeDataDetail" resultMap="BaseResultMap">
+
+    select id, type_id, naojin_title, naojin_ansker, naojin_time, naojin_oredr, naojin_isshow,
+    naojin_clicknum, naojin_photo
+    from hua_naojin where id =#{typeuuid} and naojin_isshow = 1
+
+
+  </select>
+</mapper>

@@ -23,6 +23,7 @@
 			<artifactId>fastjson</artifactId>
 			<version>RELEASE</version>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<!-- 为jar包取名 -->

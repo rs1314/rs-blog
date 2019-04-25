@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.rs.blog.dao.telephone.HuaShiWanGeTypeMapper" >
+  <resultMap id="BaseResultMap" type="cn.rs.blog.bean.telephone.HuaShiWanGeType" >
+    <id column="whiwange_type_id" property="whiwangeTypeId" jdbcType="INTEGER" />
+    <result column="whiwange_type_name" property="whiwangeTypeName" jdbcType="VARCHAR" />
+    <result column="whiwange_type_order" property="whiwangeTypeOrder" jdbcType="INTEGER" />
+    <result column="whiwange_type_isshow" property="whiwangeTypeIsshow" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hua_whiwange_type
+    where whiwange_type_id = #{whiwangeTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.rs.blog.bean.telephone.HuaShiWanGeType" >
+    insert into hua_whiwange_type (whiwange_type_id, whiwange_type_name, 
+      whiwange_type_order, whiwange_type_isshow)
+    values (#{whiwangeTypeId,jdbcType=INTEGER}, #{whiwangeTypeName,jdbcType=VARCHAR}, 
+      #{whiwangeTypeOrder,jdbcType=INTEGER}, #{whiwangeTypeIsshow,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.rs.blog.bean.telephone.HuaShiWanGeType" >
+    update hua_whiwange_type
+    set whiwange_type_name = #{whiwangeTypeName,jdbcType=VARCHAR},
+      whiwange_type_order = #{whiwangeTypeOrder,jdbcType=INTEGER},
+      whiwange_type_isshow = #{whiwangeTypeIsshow,jdbcType=INTEGER}
+    where whiwange_type_id = #{whiwangeTypeId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select whiwange_type_id, whiwange_type_name, whiwange_type_order, whiwange_type_isshow
+    from hua_whiwange_type
+    where whiwange_type_id = #{whiwangeTypeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select whiwange_type_id, whiwange_type_name, whiwange_type_order, whiwange_type_isshow
+    from hua_whiwange_type
+  </select>
+  <!--查询类目功能-->
+  <select id="selectAllHuaType" resultType="cn.rs.blog.bean.telephone.HuaType">
+    SELECT type_id as typeId,type_name as typeName,type_order as typeOrder,type_isshow as typeIsshow ,type_photo as typePhoto FROM `hua_type` WHERE type_isshow = 1 order by type_order asc
+  </select>
+</mapper>

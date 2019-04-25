@@ -8,7 +8,7 @@
  * You may re-use it at any time to build CKEditor again.
  *
  * If you would like to build CKEditor online again
- * (for example to upgrade), visit one the following links:
+ * (for rs to upgrade), visit one the following links:
  *
  * (1) http://ckeditor.com/builder
  *     Visit online builder to build CKEditor from scratch.

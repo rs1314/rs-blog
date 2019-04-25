@@ -95,8 +95,8 @@ $(document).ready(function () {
 
   });
 
-  // Tooltips demo
-  $('.tooltip-demo').tooltip({
+  // Tooltips kpl
+  $('.tooltip-kpl').tooltip({
     selector: "[data-toggle=tooltip]",
     container: "body"
   });
@@ -212,7 +212,7 @@ $(document).ready(function () {
     }
 
     if (fixednavbar == 'on') {
-      $(".navbar-static-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
+      $(".navbar-web-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
       body.addClass('fixed-nav');
     }
 
@@ -231,7 +231,7 @@ function localStorageSupport() {
   return (('localStorage' in window) && window['localStorage'] !== null)
 }
 
-// For demo purpose - animation css script
+// For kpl purpose - animation css script
 function animationHover(element, animation) {
   element = $(element);
   element.hover(

@@ -1,5 +1,6 @@
 package cn.rs.blog.config;
 
+import cn.rs.blog.web.interceptor.AppInterceptor;
 import cn.rs.blog.web.interceptor.InitInterceptor;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,13 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new InitInterceptor());
+        //对app请求进行拦截
+        registry.addInterceptor(new AppInterceptor()).addPathPatterns("/app/rs/**");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/res/").addResourceLocations("classpath:/static/**");
+        registry.addResourceHandler("/res/").addResourceLocations("classpath:/web/**");
         registry.addResourceHandler("/manage/").addResourceLocations("classpath:/manage/**");
         super.addResourceHandlers(registry);
     }
@@ -38,10 +41,12 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
         registry.addMapping("/**")
                 .allowedOrigins("*")
                 .allowCredentials(true)
-                .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS")
+                .allowedMethods("GET", "POST", "DELETE", "PUT","OPTIONS")
                 .maxAge(3600)
-                .allowedHeaders("x-auth-token,Origin,Access-Token,X-Requested-With,Content-Type, Accept")
+                .allowedHeaders("x-auth-token,Origin,Access-Token,X-Requested-With,Content-Type, Accept" )
                 .exposedHeaders("");
+
+
     }
 
     @Override

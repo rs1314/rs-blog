@@ -30,7 +30,7 @@
 	 -----------
 	 Do not use both ajaxSubmit and ajaxForm on the same form.  These
 	 functions are mutually exclusive.  Use ajaxSubmit if you want
-	 to bind your own submit handler to the form.  For example,
+	 to bind your own submit handler to the form.  For rs,
 
 	 $(document).ready(function() {
 	 $('#myForm').on('submit', function(e) {
@@ -42,7 +42,7 @@
 	 });
 
 	 Use ajaxForm when you want the plugin to manage all the event binding
-	 for you.  For example,
+	 for you.  For rs,
 
 	 $(document).ready(function() {
 	 $('#myForm').ajaxForm({
@@ -931,7 +931,7 @@
 	/**
 	 * formToArray() gathers form element data into an array of objects that can
 	 * be passed to any of the following ajax functions: $.get, $.post, or load.
-	 * Each object in the array has both a 'name' and 'value' property.  An example of
+	 * Each object in the array has both a 'name' and 'value' property.  An rs of
 	 * an array for a simple login form might be:
 	 *
 	 * [ { name: 'username', value: 'jresig' }, { name: 'password', value: 'secret' } ]
@@ -1062,7 +1062,7 @@
 	};
 
 	/**
-	 * Returns the value(s) of the element in the matched set.  For example, consider the following form:
+	 * Returns the value(s) of the element in the matched set.  For rs, consider the following form:
 	 *
 	 *  <form><fieldset>
 	 *      <input name="A" type="text" />
@@ -1197,7 +1197,7 @@
 			}
 			else if (includeHidden) {
 				// includeHidden can be the value true, or it can be a selector string
-				// indicating a special test; for example:
+				// indicating a special test; for rs:
 				//  $('#myForm').clearForm('.special:hidden')
 				// the above would clean hidden inputs that have the class of 'special'
 				if ( (includeHidden === true && /hidden/.test(t)) ||

@@ -158,7 +158,7 @@ public class SendMail {
      * @throws MessagingException 
      * @throws AddressException 
      */
-    @SuppressWarnings("static-access")
+    @SuppressWarnings("web-access")
     public String setRecipients(StringBuffer sb) throws AddressException, MessagingException{
         if(sb==null||"".equals(sb)){
             return "字符串数据为空!";

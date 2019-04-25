@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.rs.blog.dao.telephone.HuaShiWanGeMapper" >
+  <resultMap id="BaseResultMap" type="cn.rs.blog.bean.telephone.HuaShiWanGe" >
+    <id column="shiwange_id" property="shiwangeId" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="shiwange_question" property="shiwangeQuestion" jdbcType="VARCHAR" />
+    <result column="shiwange_createtime" property="shiwangeCreatetime" jdbcType="VARCHAR" />
+    <result column="shiwange_clicknum" property="shiwangeClicknum" jdbcType="INTEGER" />
+    <result column="shiwange_isshow" property="shiwangeIsshow" jdbcType="INTEGER" />
+    <result column="shiwange_order" property="shiwangeOrder" jdbcType="INTEGER" />
+    <result column="shiwange_type_id" property="shiwangeTypeId" jdbcType="INTEGER" />
+    <result column="shiwange_answer_detail" property="shiwangeAnswerDetail" jdbcType="LONGVARCHAR" />
+    <result column="shiwange_answer" property="shiwangeAnswer" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from hua_shiwange
+    where shiwange_id = #{shiwangeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.rs.blog.bean.telephone.HuaShiWanGe" >
+    insert into hua_shiwange (shiwange_id, type_id, shiwange_question, 
+      shiwange_createtime, shiwange_clicknum, shiwange_isshow, 
+      shiwange_order, shiwange_type_id, shiwange_answer_detail, 
+      shiwange_answer)
+    values (#{shiwangeId,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{shiwangeQuestion,jdbcType=VARCHAR}, 
+      #{shiwangeCreatetime,jdbcType=VARCHAR}, #{shiwangeClicknum,jdbcType=INTEGER}, #{shiwangeIsshow,jdbcType=INTEGER}, 
+      #{shiwangeOrder,jdbcType=INTEGER}, #{shiwangeTypeId,jdbcType=INTEGER}, #{shiwangeAnswerDetail,jdbcType=LONGVARCHAR}, 
+      #{shiwangeAnswer,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.rs.blog.bean.telephone.HuaShiWanGe" >
+    update hua_shiwange
+    set type_id = #{typeId,jdbcType=INTEGER},
+      shiwange_question = #{shiwangeQuestion,jdbcType=VARCHAR},
+      shiwange_createtime = #{shiwangeCreatetime,jdbcType=VARCHAR},
+      shiwange_clicknum = #{shiwangeClicknum,jdbcType=INTEGER},
+      shiwange_isshow = #{shiwangeIsshow,jdbcType=INTEGER},
+      shiwange_order = #{shiwangeOrder,jdbcType=INTEGER},
+      shiwange_type_id = #{shiwangeTypeId,jdbcType=INTEGER},
+      shiwange_answer_detail = #{shiwangeAnswerDetail,jdbcType=LONGVARCHAR},
+      shiwange_answer = #{shiwangeAnswer,jdbcType=LONGVARCHAR}
+    where shiwange_id = #{shiwangeId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select shiwange_id, type_id, shiwange_question, shiwange_createtime, shiwange_clicknum, 
+    shiwange_isshow, shiwange_order, shiwange_type_id, shiwange_answer_detail, shiwange_answer
+    from hua_shiwange
+    where shiwange_id = #{shiwangeId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select shiwange_id, type_id, shiwange_question, shiwange_createtime, shiwange_clicknum, 
+    shiwange_isshow, shiwange_order, shiwange_type_id, shiwange_answer_detail, shiwange_answer
+    from hua_shiwange
+  </select>
+
+  <select id="selectByPrimaryKeyByPageVo" resultMap="BaseResultMap" >
+    select shiwange_id, type_id, shiwange_question, shiwange_createtime, shiwange_clicknum,
+    shiwange_isshow, shiwange_order, shiwange_type_id, shiwange_answer_detail, shiwange_answer
+    from hua_shiwange where shiwange_isshow = 1 order by shiwange_clicknum desc limit ${page} ,10
+  </select>
+
+  <select id="midTypeDataListCount" resultType="java.lang.Integer">
+    select count(*) from
+     <if test='type == "1"'>
+
+       hua_shiwange where shiwange_isshow = 1
+     </if>
+    <if test='type == "4"'>
+
+      hua_qiwenyilu where qiwenyilu_isshow = 1
+    </if>
+
+    <if test='type == "2"'>
+
+      hua_naojin where naojin_isshow = 1
+    </if>
+
+    <if test='type == "3"'>
+
+      hua_miyu where miyu_isshow = 1
+    </if>
+
+  </select>
+  <!--查询type单个详情-->
+  <select id="getTypeDataDetail" resultMap="BaseResultMap">
+
+      select shiwange_id, type_id, shiwange_question, shiwange_createtime, shiwange_clicknum,
+    shiwange_isshow, shiwange_order, shiwange_type_id, shiwange_answer_detail, shiwange_answer
+     FROM `hua_shiwange` WHERE shiwange_id =#{typeuuid} and shiwange_isshow = 1
+
+
+  </select>
+
+  <update id="updateByPrimaryKeyClickNum">
+    <if test='type == "4"'>
+      update  hua_qiwenyilu set qiwenyilu_clicknum =qiwenyilu_clicknum +1 where id =#{typeuuid}
+
+    </if>
+    <if test='type == "1"'>
+
+       update  hua_shiwange set shiwange_clicknum =shiwange_clicknum +1 where shiwange_id =#{typeuuid}
+    </if>
+
+    <if test='type == "2"'>
+      update  hua_naojin set naojin_clicknum =naojin_clicknum +1 where id =#{typeuuid}
+
+    </if>
+
+    <if test='type == "3"'>
+      update  hua_miyu set miyu_clicknum =miyu_clicknum +1 where id =#{typeuuid}
+
+    </if>
+
+
+  </update>
+</mapper>

@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="referrer" content="no-referrer"/>
     <meta name="format-detection" content="telephone=no">
     <title>${picture.member.name}的图片 - ${SITE_NAME} - Powered By rs</title>
     <meta name="keywords" content="${SITE_KEYS}"/>

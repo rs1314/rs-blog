@@ -1,0 +1,12 @@
+package cn.rs.blog.commoms.utils.sign;
+
+public class SignConfig {
+    /**
+     * 公钥
+     */
+    public static final String PUBLICKEY="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4kc+R9efs+yksVkVAZIj3rFvun8GDXMX+0U7uaow+8R5mU4X63WnLI3olLMOvRaNwscEhN9BL4DJ9IGyKQWAGznH+IJvO47Ad0Nm5MbUJ27aHmis20afcYzaTz+cQa5TtK6zSIrsKka1VwePHPoNVkuD1Pdo4BR+/DDBl0QMwsQIDAQAB";
+    /**
+     * 私钥
+     */
+    public static final String PRIVATEKEY="MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBALiRz5H15+z7KSxWRUBkiPesW+6fwYNcxf7RTu5qjD7xHmZThfrdacsjeiUsw69Fo3CxwSE30EvgMn0gbIpBYAbOcf4gm87jsB3Q2bkxtQnbtoeaKzbRp9xjNpPP5xBrlO0rrNIiuwqRrVXB48c+g1WS4PU92jgFH78MMGXRAzCxAgMBAAECgYBdejvOiOS1uV7Y/biFLGXSSpElAfRYO5xrukZnqb7uAeCLorGwpIL4RzeNrGZPVs24Pc66rDHqu9nWVZ2jSAkBjUpwWn8Yny3A55LQyypgqMdIVbEf1QkileCXoNUjzLVvauwtE+X7cpV1ExhEfH5V2qD1MDr+Z/eLYvNbK8zIIQJBANwDXc/MBrqfpiBDBt0YDcS55E8z5Fzk1k2uU38NRVembMK1U7gWta0wqXp12PL6TIEcBiBKKIVN0fuctbEFcZsCQQDWwk/RllBJl/axPRpgAOlueu63LfJ2a5hyrVpnlPXSpE3vctXY4Q0RRoBnqH0oxoipMbckmGaZYVs+nbK5EsGjAkAGEPWyOA7rcGF1PEPhLruadAGuiWC/ivO5upfExgnma8lN6RAA4Gdr+g6COOOdd3dKjApDM6hAXK/wfxanZd4HAkAdxVAFUN4OZaeICF1oo5e4fggrko4DBoVamFdo9ohhS++V2wh0CTajh29zbzLyfRsiwUaPJyVJ6+oXMws8hrIbAkBpZodUM0vws3CqXWUqsUPVVYBU2GIPkMG82nuQonks6Lt3nM1ZiXgNDgI+1adLGaWXy12YGu7OJaqhPcur94WW";
+}

@@ -19,6 +19,14 @@
 
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.3.0-alpha4</version>
+		</dependency>
+
+
 		<dependency>
 			<artifactId>blog-rs-service</artifactId>
 			<groupId>cn.rs.blog</groupId>

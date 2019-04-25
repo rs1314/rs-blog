@@ -40,19 +40,19 @@ public class Const {
 	/**
 	 * 默认图片路径
 	 */
-	//public static final String DEFAULT_IMG_URL = "/res/common/images/nopic.png";
+	//public web final String DEFAULT_IMG_URL = "/res/common/images/nopic.png";
 	public static final String DEFAULT_IMG_URL = "https://ws3.sinaimg.cn/large/9406510dgy1fwut2ueho3j20n409uglx.jpg";
 
 	/**
 	 * 默认头像
 	 */
-	//public static final String DEFAULT_AVATAR = "/res/common/images/default-avatar.png";
+	//public web final String DEFAULT_AVATAR = "/res/common/images/default-avatar.png";
 	public static final String DEFAULT_AVATAR = "https://ws2.sinaimg.cn/large/9406510dgy1fwut1entzuj205k05kq2q.jpg";
 
 	/**
 	 * 默认相册封面
 	 */
-	//public static final String DEFAULT_PICTURE_COVER = "/res/common/images/empty_album.png";
+	//public web final String DEFAULT_PICTURE_COVER = "/res/common/images/empty_album.png";
 	public static final String DEFAULT_PICTURE_COVER = "https://ws1.sinaimg.cn/large/9406510dgy1fwut3rw6nej205k05kt8j.jpg";
 	/**
 	 * 群组路径

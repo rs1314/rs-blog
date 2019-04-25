@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="referrer" content="no-referrer"/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>rs后台管理首页 - ${SITE_NAME} - rs后台管理系统 - Powered By rs</title>
     <meta name="keywords" content="${SITE_KEYS}"/>

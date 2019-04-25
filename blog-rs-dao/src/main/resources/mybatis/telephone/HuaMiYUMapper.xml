@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.rs.blog.dao.telephone.HuaMiYUMapper" >
+  <resultMap id="BaseResultMap" type="cn.rs.blog.bean.telephone.HuaMiYU" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="miyu_title" property="miyuTitle" jdbcType="VARCHAR" />
+    <result column="miyu_ansker" property="miyuAnsker" jdbcType="VARCHAR" />
+    <result column="miyu_time" property="miyuTime" jdbcType="VARCHAR" />
+    <result column="miyu_oredr" property="miyuOredr" jdbcType="INTEGER" />
+    <result column="miyu_isshow" property="miyuIsshow" jdbcType="INTEGER" />
+    <result column="miyu_clicknum" property="miyuClicknum" jdbcType="INTEGER" />
+    <result column="miyu_tieshi" property="miyuTieshi" jdbcType="VARCHAR" />
+    <result column="miyu_photo" property="miyuPhoto" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from hua_miyu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.rs.blog.bean.telephone.HuaMiYU" >
+    insert into hua_miyu (id, type_id, miyu_title, 
+      miyu_ansker, miyu_time, miyu_oredr, 
+      miyu_isshow, miyu_clicknum, miyu_tieshi, 
+      miyu_photo)
+    values (#{id,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{miyuTitle,jdbcType=VARCHAR}, 
+      #{miyuAnsker,jdbcType=VARCHAR}, #{miyuTime,jdbcType=VARCHAR}, #{miyuOredr,jdbcType=INTEGER}, 
+      #{miyuIsshow,jdbcType=INTEGER}, #{miyuClicknum,jdbcType=INTEGER}, #{miyuTieshi,jdbcType=VARCHAR}, 
+      #{miyuPhoto,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.rs.blog.bean.telephone.HuaMiYU" >
+    update hua_miyu
+    set type_id = #{typeId,jdbcType=INTEGER},
+      miyu_title = #{miyuTitle,jdbcType=VARCHAR},
+      miyu_ansker = #{miyuAnsker,jdbcType=VARCHAR},
+      miyu_time = #{miyuTime,jdbcType=VARCHAR},
+      miyu_oredr = #{miyuOredr,jdbcType=INTEGER},
+      miyu_isshow = #{miyuIsshow,jdbcType=INTEGER},
+      miyu_clicknum = #{miyuClicknum,jdbcType=INTEGER},
+      miyu_tieshi = #{miyuTieshi,jdbcType=VARCHAR},
+      miyu_photo = #{miyuPhoto,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, type_id, miyu_title, miyu_ansker, miyu_time, miyu_oredr, miyu_isshow, 
+    miyu_clicknum, miyu_tieshi, miyu_photo
+    from hua_miyu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, type_id, miyu_title, miyu_ansker, miyu_time, miyu_oredr, miyu_isshow, 
+    miyu_clicknum, miyu_tieshi, miyu_photo
+    from hua_miyu
+  </select>
+
+  <select id="selectByPrimaryKeyByPageVo" resultMap="BaseResultMap" >
+    select id, type_id, miyu_title, miyu_ansker, miyu_time, miyu_oredr, miyu_isshow,
+    miyu_clicknum, miyu_tieshi, miyu_photo
+    from hua_miyu where miyu_isshow = 1 order by miyu_clicknum desc limit ${page} ,10
+  </select>
+
+  <select id="getTypeDataDetail" resultMap="BaseResultMap" >
+    select id, type_id, miyu_title, miyu_ansker, miyu_time, miyu_oredr, miyu_isshow,
+    miyu_clicknum, miyu_tieshi, miyu_photo
+    from hua_miyu where  id =#{typeuuid} and miyu_isshow = 1
+  </select>
+</mapper>

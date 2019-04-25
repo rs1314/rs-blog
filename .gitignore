@@ -2,6 +2,13 @@
 *.iml
 *.swp
 target/
-
-
+filesystem/
+chaobi_Tmp_EhCache/
 sn.txt
+blog-rs-bean/target/
+blog-rs-commoms/target/
+blog-rs-core/target/
+blog-rs-dao/target/
+blog-rs-service/target/
+blog-rs-web/target/
+blog-rs-web/logs/

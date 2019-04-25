@@ -2,7 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="referrer" content="no-referrer"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="no-referrer"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${SITE_NAME} - ${SITE_SEO_TITLE} - Powered By rs</title>
     <meta name="keywords" content="${SITE_KEYS}"/>

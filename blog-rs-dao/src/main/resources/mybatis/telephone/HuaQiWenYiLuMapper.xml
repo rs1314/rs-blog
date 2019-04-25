@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.rs.blog.dao.telephone.HuaQiWenYiLuMapper" >
+  <resultMap id="BaseResultMap" type="cn.rs.blog.bean.telephone.HuaQiWenYiLu" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="qiwenyilu_title" property="qiwenyiluTitle" jdbcType="VARCHAR" />
+    <result column="qiwenyilu_time" property="qiwenyiluTime" jdbcType="VARCHAR" />
+    <result column="qiwenyilu_order" property="qiwenyiluOrder" jdbcType="INTEGER" />
+    <result column="qiwenyilu_isshow" property="qiwenyiluIsshow" jdbcType="INTEGER" />
+    <result column="qiwenyilu_clicknum" property="qiwenyiluClicknum" jdbcType="INTEGER" />
+    <result column="qiwenyilu_detail" property="qiwenyiluDetail" jdbcType="LONGVARCHAR" />
+    <result column="qiwenyilu_details" property="qiwenyiluDetails" jdbcType="LONGVARCHAR" />
+    <result column="qiwenyilu_photo" property="qiwenyiluPhoto" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from hua_qiwenyilu
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.rs.blog.bean.telephone.HuaQiWenYiLu" >
+    insert into hua_qiwenyilu (id, type_id, qiwenyilu_title, 
+      qiwenyilu_time, qiwenyilu_order, qiwenyilu_isshow, 
+      qiwenyilu_clicknum, qiwenyilu_detail, 
+      qiwenyilu_details, qiwenyilu_photo
+      )
+    values (#{id,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{qiwenyiluTitle,jdbcType=VARCHAR}, 
+      #{qiwenyiluTime,jdbcType=VARCHAR}, #{qiwenyiluOrder,jdbcType=INTEGER}, #{qiwenyiluIsshow,jdbcType=INTEGER}, 
+      #{qiwenyiluClicknum,jdbcType=INTEGER}, #{qiwenyiluDetail,jdbcType=LONGVARCHAR}, 
+      #{qiwenyiluDetails,jdbcType=LONGVARCHAR}, #{qiwenyiluPhoto,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.rs.blog.bean.telephone.HuaQiWenYiLu" >
+    update hua_qiwenyilu
+    set type_id = #{typeId,jdbcType=INTEGER},
+      qiwenyilu_title = #{qiwenyiluTitle,jdbcType=VARCHAR},
+      qiwenyilu_time = #{qiwenyiluTime,jdbcType=VARCHAR},
+      qiwenyilu_order = #{qiwenyiluOrder,jdbcType=INTEGER},
+      qiwenyilu_isshow = #{qiwenyiluIsshow,jdbcType=INTEGER},
+      qiwenyilu_clicknum = #{qiwenyiluClicknum,jdbcType=INTEGER},
+      qiwenyilu_detail = #{qiwenyiluDetail,jdbcType=LONGVARCHAR},
+      qiwenyilu_details = #{qiwenyiluDetails,jdbcType=LONGVARCHAR},
+      qiwenyilu_photo = #{qiwenyiluPhoto,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, type_id, qiwenyilu_title, qiwenyilu_time, qiwenyilu_order, qiwenyilu_isshow, 
+    qiwenyilu_clicknum, qiwenyilu_detail, qiwenyilu_details, qiwenyilu_photo
+    from hua_qiwenyilu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, type_id, qiwenyilu_title, qiwenyilu_time, qiwenyilu_order, qiwenyilu_isshow, 
+    qiwenyilu_clicknum, qiwenyilu_detail, qiwenyilu_details, qiwenyilu_photo
+    from hua_qiwenyilu
+  </select>
+
+  <select id="selectByPrimaryKeyByPageVo" resultMap="BaseResultMap" >
+    select id, type_id, qiwenyilu_title, qiwenyilu_time, qiwenyilu_order, qiwenyilu_isshow,
+    qiwenyilu_clicknum, qiwenyilu_detail, qiwenyilu_details, qiwenyilu_photo
+    from hua_qiwenyilu where qiwenyilu_isshow = 1 order by qiwenyilu_clicknum desc limit ${page} ,10
+  </select>
+
+  <!--查询type单个详情-->
+  <select id="getTypeDataDetail" resultMap="BaseResultMap">
+
+    select id, type_id, qiwenyilu_title, qiwenyilu_time, qiwenyilu_order, qiwenyilu_isshow,
+    qiwenyilu_clicknum, qiwenyilu_detail, qiwenyilu_details, qiwenyilu_photo
+    from hua_qiwenyilu where id =#{typeuuid} and qiwenyilu_isshow = 1
+
+
+  </select>
+</mapper>
