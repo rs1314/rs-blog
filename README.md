@@ -77,7 +77,7 @@ rs-blog是一款基于JAVA企业级平台研发的社交管理系统，依托企
 4. 修改数据库连接。打开`/src/main/resources/application.yml文件，根据实际情况修改`jdbc.url`、`jdbc.user`、`jdbc.password`的值，修改后台路径：`managePath`，如：`managePath=manage`
 5. 编译项目。在eclipse中，右键点击项目名，选择`Run as` - `Maven build...`，`Goals`填入`clean package`，然后点击`Run`，第一次运行需要下载jar包，请耐心等待。
 6. 部署项目。直接安装打包后运行   nohup java -jar  rs-blog.jar
-7. 访问系统。前台地址：[http://localhost:8080/](http://localhost:8080/)；用户名：admin，密码：linaihua，登录成功之后，在右上角展开有个'管理'，点击即可进入后台管理。
+7. 访问系统。前台地址：[http://localhost:8080/](http://localhost:8080/)；用户名：admin，密码：123456，登录成功之后，在右上角展开有个'管理'，点击即可进入后台管理。
 8. 使用qq邮箱发送邮件,可以设置为自己需要的 
 9. 新浪上传图片需要自行注册一个账号,填写进去
 
