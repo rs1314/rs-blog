@@ -85,9 +85,9 @@ rs-blog是一款基于JAVA企业级平台研发的社交管理系统，依托企
 
 交流社区：http://blog.rs1314.cn
 
-  QQ群  414572608
+点击链接加入群聊【Java交流】：https://jq.qq.com/?_wv=1027&k=5pgo5ut
 
- 微信公众号   rskaixin
+微信号   javawjs
 
 csdn   https://blog.csdn.net/qq_29556507
 

@@ -15,7 +15,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
     driver-class-name: org.gjt.mm.mysql.Driver          # mysql驱动包
-    #url: jdbc:mysql://119.23.110.243:3306/rs_blog?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true             # 数据库名称
+    #url: jdbc:mysql://188.23.111.253:3306/rs_blog?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true             # 数据库名称
     url: jdbc:mysql://192.168.1.115:3306/rs_blog?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true             # 数据库名称
     #url: jdbc:mysql://127.0.0.1:3306/hua_blog?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true               # 数据库名称
     username: root
