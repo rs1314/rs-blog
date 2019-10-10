@@ -3,6 +3,7 @@ package cn.rs.blog.web.web.common;
 
 import cn.rs.blog.commoms.utils.sina.GeneralUtils;
 import cn.rs.blog.commoms.utils.sina.SinaPicBedUtil;
+import cn.rs.blog.commoms.utils.sougou.SouGouPicBedUtil;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -93,9 +94,12 @@ public class CkeditorUploadController extends BaseController {
                      "6">thumbnail
                      "7">square
                      */
-                    //上传回来 的图片地址
+                    //上传回来 的图片地址,,改成搜狗图床
                     MultipartFile[] multipartFiles = {file};
-                    urls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 2);
+                    urls = SouGouPicBedUtil.uploadFile(multipartFiles);
+
+
+                    // urls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 2);
                 } catch (IOException e) {
                     out.print("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" + callback + ",''," + "'" + e + "');</script>");
                     out.flush();

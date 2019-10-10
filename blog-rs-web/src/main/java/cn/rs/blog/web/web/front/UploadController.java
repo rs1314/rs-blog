@@ -6,6 +6,7 @@ import cn.rs.blog.bean.picture.PictureAlbum;
 import cn.rs.blog.commoms.utils.MemberUtil;
 import cn.rs.blog.commoms.utils.sina.GeneralUtils;
 import cn.rs.blog.commoms.utils.sina.SinaPicBedUtil;
+import cn.rs.blog.commoms.utils.sougou.SouGouPicBedUtil;
 import cn.rs.blog.core.dto.ResultModel;
 import cn.rs.blog.core.utils.Const;
 import cn.rs.blog.core.utils.StringUtils;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -64,7 +66,9 @@ public class UploadController extends BaseController {
      */
     @RequestMapping("/weiboUploadImage")
     @ResponseBody
-    public Object weiboUploadImage(@RequestParam(value = "file", required = false) MultipartFile file) {
+    public Object weiboUploadImage(@RequestParam(value = "file", required = false) MultipartFile file) throws IOException {
+
+
         return uploadImage(file, 2);
     }
 
@@ -135,7 +139,9 @@ public class UploadController extends BaseController {
              "7">square
              */
             //上传回来 的图片地址
-            urls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 0);
+
+            urls = SouGouPicBedUtil.uploadFile(multipartFiles);
+            // urls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 0);
             //上传成功的图片URL，如果是文章、群组帖子、微博图片，则返回图片ID
             if (urls != null && urls.size() > 0) {
                 if (type == 2) {
@@ -157,10 +163,11 @@ public class UploadController extends BaseController {
                         md5 =UUID.randomUUID().toString();
                         picture.setMd5(md5);
                         //生成缩略图和小图片
-                     //   new ImageUtil().dealImage(targetFile);
+                        //   new ImageUtil().dealImage(targetFile);
                         picture.setPath(urls.get(0));
                         //上传小图片
-                        List<String> smailPricceUrls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 6);
+                        // List<String> smailPricceUrls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 6);
+                        List<String> smailPricceUrls = SouGouPicBedUtil.uploadFile(multipartFiles);
                         if(smailPricceUrls!=null && smailPricceUrls.size()>0){
                             picture.setThumbnailPath(smailPricceUrls.get(0));
                             picture.setSmallPath(smailPricceUrls.get(0));
@@ -183,7 +190,8 @@ public class UploadController extends BaseController {
                         return new ResultModel(-1, "上传失败" );
                     }
                 } else if (type == 11) {
-                    List<String> smailPricceUrls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 6);
+                    // List<String> smailPricceUrls = SinaPicBedUtil.uploadFile(multipartFiles, cookies, 6);
+                    List<String> smailPricceUrls = SouGouPicBedUtil.uploadFile(multipartFiles);
                     url = smailPricceUrls.get(0);
                     md5 =UUID.randomUUID().toString();;
                 } else {
